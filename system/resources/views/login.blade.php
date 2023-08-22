@@ -43,7 +43,7 @@
                         <div class="content-column col-lg-12 col-md-12 col-sm-12">
                             <div class="inner-column d-flex px-3 py-3">
                                 <div class="form-group">
-                                <p>Jika Belum Memiliki Akun Silahkan <a href="{{ url('register') }}"> Register</a></p>
+                                <p>Jika Belum Memiliki Akun Silahkan <a href="{{ url('register') }}"> Registrasi</a></p>
                                 </div>
                             </div>
                         </div>

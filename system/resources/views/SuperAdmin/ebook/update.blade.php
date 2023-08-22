@@ -28,6 +28,20 @@
                                 </div>
                                 <div class="col-lg-4 col-12">
                                     <div class="form-group">
+                                        <label for="">Penulis</label>
+                                        <input type="text" name="penulis" value="{{ $list->penulis }}"
+                                            class="form-control" placeholder="Penulis ..."required>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-12">
+                                    <div class="form-group">
+                                        <label for="">Tahun Terbit</label>
+                                        <input type="number" min="2000" name="tahun" value="{{ $list->tahun }}" class="form-control" 
+                                        placeholder="Tahun Rilis ..."required>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-12">
+                                    <div class="form-group">
                                         <label for="">Sampul</label>
                                         <input id="gambar" type="file" name="sampul" class="form-control"
                                             accept=".png, .jpg, .jpeg">

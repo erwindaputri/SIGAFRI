@@ -32,12 +32,14 @@
 
                     @foreach ($slicedEbook as $ebook)
                     <div class="service-block col-lg-3 col-md-6 col-sm-12 wow fadeIn">
-                        <div class="inner-box">
+                        <div class="inner-box shadow">
                             <div class="image-box">
                                 <img src="{{ url('public') }}/{{ $ebook->sampul }}">
                                 <div class="overlay-box">
                                     <div class="content">
-                                        <div class="text">{{ $ebook->nama_spesies }}</div>
+                                        <div class="text">{{ $ebook->nama_spesies }} <br>
+                                        <b>Penulis :</b> {{ ucwords($ebook->penulis) }} ({{ $ebook->tahun }})
+                                        </div>
                                         <div class="link">
                                             <a href="{{ url('public') }}/{{ $ebook->pdf }}" class="link" target="_blank"><i class="flaticon-add"></i>Selengkapnya >></a>
                                         </div>

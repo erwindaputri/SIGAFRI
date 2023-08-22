@@ -4,13 +4,12 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SuperAdmin\SPDashboard;
 use App\Http\Controllers\SuperAdmin\SPSpesies;
 use App\Http\Controllers\SuperAdmin\SPEbook;
-use App\Http\Controllers\SuperAdmin\SPKegiatan;
+use App\Http\Controllers\SuperAdmin\SPBerita;
 use App\Http\Controllers\SuperAdmin\SPRescue;
-use App\Http\Controllers\SuperAdmin\SPUser;
 use App\Http\Controllers\Admin\AdminDashboard;
 use App\Http\Controllers\Admin\AdminSpesies;
 use App\Http\Controllers\Admin\AdminEbook;
-use App\Http\Controllers\Admin\AdminKegiatan;
+use App\Http\Controllers\Admin\AdminBerita;
 use App\Http\Controllers\Admin\AdminRescue;
 use App\Http\Controllers\LandingPage\LPHome;
 use App\Http\Controllers\SPAuth;
@@ -54,14 +53,14 @@ Route::group(['middleware' => 'auth:super-admin'], function () {
       Route::post('/ebook/updateAct/{ebook}', 'updateAct');
       Route::get('/ebook/hapus/{ebook}', 'hapus');
     });
-    Route::controller(SPKegiatan::class)->group(function () {
-      Route::get('/kegiatan', 'index');
-      Route::get('/kegiatan/add', 'add');
-      Route::post('/kegiatan/tambahAct', 'tambahAct');
-      Route::get('/kegiatan/detail/{kegiatan}', 'detail');
-      Route::get('/kegiatan/update/{kegiatan}', 'update');
-      Route::post('/kegiatan/updateAct/{kegiatan}', 'updateAct');
-      Route::get('/kegiatan/hapus/{kegiatan}', 'hapus');
+    Route::controller(SPBerita::class)->group(function () {
+      Route::get('/berita', 'index');
+      Route::get('/berita/add', 'add');
+      Route::post('/berita/tambahAct', 'tambahAct');
+      Route::get('/berita/detail/{berita}', 'detail');
+      Route::get('/berita/update/{berita}', 'update');
+      Route::post('/berita/updateAct/{berita}', 'updateAct');
+      Route::get('/berita/hapus/{berita}', 'hapus');
     });
     Route::controller(SPRescue::class)->group(function () {
       Route::get('/rescue', 'index');
@@ -136,14 +135,14 @@ Route::group(['middleware' => 'auth:admin'], function () {
       Route::post('/ebook/updateAct/{ebook}', 'updateAct');
       Route::get('/ebook/hapus/{ebook}', 'hapus');
     });
-    Route::controller(AdminKegiatan::class)->group(function () {
-      Route::get('/kegiatan', 'index');
-      Route::get('/kegiatan/add', 'add');
-      Route::post('/kegiatan/tambahAct', 'tambahAct');
-      Route::get('/kegiatan/detail/{kegiatan}', 'detail');
-      Route::get('/kegiatan/update/{kegiatan}', 'update');
-      Route::post('/kegiatan/updateAct/{kegiatan}', 'updateAct');
-      Route::get('/kegiatan/hapus/{kegiatan}', 'hapus');
+    Route::controller(AdminBerita::class)->group(function () {
+      Route::get('/berita', 'index');
+      Route::get('/berita/add', 'add');
+      Route::post('/berita/tambahAct', 'tambahAct');
+      Route::get('/berita/detail/{berita}', 'detail');
+      Route::get('/berita/update/{berita}', 'update');
+      Route::post('/berita/updateAct/{berita}', 'updateAct');
+      Route::get('/berita/hapus/{berita}', 'hapus');
     });
     Route::controller(AdminRescue::class)->group(function () {
       Route::get('/rescue', 'index');
@@ -182,17 +181,19 @@ Route::prefix('/')->group(function () {
     Route::get('/amfibi', 'amfibi');
     Route::get('/reptil', 'reptil');
     Route::get('/TambahSpesies', 'TambahSpesies');
+    Route::get('/detailspesies/{spesies}', 'detailspesies');
     Route::get('/Tambah', 'Tambah');
     Route::post('spesies-anggota', 'storeSpesiesAnggota');
-
     Route::get('/detailReptil/{reptil}', 'detailReptil');
     Route::get('/detailAmfibi/{amfibi}', 'detailAmfibi');
+    Route::get('/berita', 'berita');
+    Route::get('/detailBerita/{berita}', 'detailBerita');
     Route::get('/seminar', 'seminar');
     Route::get('/detailSeminar/{seminar}', 'detailSeminar');
     Route::get('/trip', 'trip');
     Route::get('/detailTrip/{trip}', 'detailTrip');
-    Route::get('/berita', 'berita');
-    Route::get('/detailBerita/{berita}', 'detailBerita');
+    Route::get('/kegiatan', 'kegiatan');
+    Route::get('/detailKegiatan/{kegiatan}', 'detailKegiatan');
     Route::get('/ebook', 'ebook');
     Route::get('/rescue', 'rescue');
   });

@@ -2,6 +2,7 @@
  
  namespace App\Http\Controllers\Admin;
  use App\Http\Controllers\Controller;
+ use Illuminate\Support\Facades\Crypt; 
  use Illuminate\Http\Request;
  use App\Models\Rescue;
  use Str;
@@ -29,9 +30,9 @@ class AdminRescue extends Controller
         $rescue->save();
         return redirect('Admin/rescue')->with('success', 'Data berhasil disimpan !');
     }
-    function update(Rescue $rescue){
-        
-        $data['list'] = $rescue;
+    function update($rescue) {
+        $id = Crypt::decrypt($rescue); // Gunakan Crypt::decrypt() daripada decrypt()
+        $data['list'] = Rescue::findOrFail($id);
         return view('Admin.rescue.update', $data);
     }
 
@@ -45,6 +46,7 @@ class AdminRescue extends Controller
 
         return redirect('Admin/rescue')->with('warning','Data Berhasil Diedit');
     }
+
 
     function hapus(Rescue $rescue){
 

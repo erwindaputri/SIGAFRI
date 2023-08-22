@@ -6,11 +6,11 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Models\Spesies;
-use App\Models\Kegiatan;
+use App\Models\Berita;
 use App\Models\Ebook;
 use App\Models\Rescue;
-use App\Models\User;
-use App\Models\HakAkses;
+use App\Models\Admin;
+use App\Models\Anggota;
 use App\Models\SuperAdmin;
 
 class SPDashboard extends Controller{
@@ -23,11 +23,12 @@ class SPDashboard extends Controller{
         $data['amfibiData'] = Spesies::where('kategori_spesies', 'Amfibi')->get();
 
         $data['spesies'] = Spesies::all()->count();
-        $data['kegiatan'] = Kegiatan::all()->count();
+        $data['berita'] = Berita::all()->count();
         $data['ebook'] = Ebook::all()->count();
         $data['rescue'] = Rescue::all()->count();
-        $data['user'] = User::all()->count();
-        $data['hak_akses'] = HakAkses::all()->count();
+        $data['admin'] = Admin::all()->count();
+        $data['anggota'] = Anggota::all()->count();
+        $data['superadmin'] = SuperAdmin::all()->count();
 
         return view('SuperAdmin.dashboard', $data);
     }

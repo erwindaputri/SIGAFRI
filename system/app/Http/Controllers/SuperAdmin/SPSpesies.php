@@ -37,6 +37,7 @@ class SPSpesies extends Controller{
         if ($req->deskripsi == '') {
             return back()->with('danger', 'Deskripsi harus diisi.');
         }
+        $spesies->deskripsi = $req->deskripsi;
         $spesies->level = '2';
         $simpanSpesies = $spesies->save();
         if ($simpanSpesies == 1) {

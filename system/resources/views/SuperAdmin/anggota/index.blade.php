@@ -40,7 +40,7 @@
                                         </td>
                                         <td class="text-center">
                                             @if ($anggota->status == 1)
-                                                <form action="{{ url('SuperAdmin/anggota/konfirmasi', $anggota->nomor) }}" method="POST">
+                                                <form action="{{ url('SuperAdmin/anggota/konfirmasi', $anggota->nomor) }}" method="POST" onclick="return confirm('Yakin ingin validasi akun ini ?!')">
                                                     @csrf
                                                     @method("PUT")
                                                     <input type="text" value="{{ $anggota->confir_password }}" name="confir_password" hidden>

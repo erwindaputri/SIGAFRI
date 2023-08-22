@@ -8,7 +8,7 @@
             </div>
             <ul class="page-breadcrumb">
                 <li><a href="">Home</a></li>
-                <li>Kegiatan</li>
+                <li>Berita</li>
                 <li><a href="">Trip</a></li>
 
             </ul>
@@ -27,7 +27,7 @@
                                 <!-- Tambahkan class "text-center" untuk membuatnya rata tengah -->
                                 <div class="image-box wow fadeIn text-center">
                                     <figure class="image">
-                                        <img src="{{ url('public') }}/{{ $list->gambar_kegiatan }}" alt=""
+                                        <img src="{{ url('public') }}/{{ $list->gambar_berita }}" alt=""
                                             style="max-width: 100%; height: auto;">
                                         <!-- Sesuaikan ukuran gambar dengan menambahkan styling inline -->
                                     </figure>
@@ -41,7 +41,7 @@
                                         </ul>
                                         <div class="content">
 
-                                            <h3>{{ $list->nama_kegiatan }}</h3>
+                                            <h3>{{ $list->nama_berita }}</h3>
                                             <p>{!! $list->deskripsi !!}</p>
                                         </div>
                                     </div>

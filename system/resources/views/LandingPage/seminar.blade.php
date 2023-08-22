@@ -9,7 +9,7 @@
             </div>
             <ul class="page-breadcrumb">
                 <li><a href="index.html">Home</a></li>
-                <li>Kegiatan</li>
+                <li>Berita</li>
                 <li>Seminar</li>
             </ul>
         </div>
@@ -38,7 +38,7 @@
                             <div class="inner-column">
                                 <figure class="image">
                                     <a href="#">
-                                        <img src="{{ url('public') }}/{{ $seminar->gambar_kegiatan }}" alt="">
+                                        <img src="{{ url('public') }}/{{ $seminar->gambar_berita }}" alt="">
                                     </a>
                                 </figure>
                             </div>
@@ -52,7 +52,7 @@
                                     <li class="day">{{ $seminar->tahunSaja() }}</li>
                                 </ul>
                                 <div class="content">
-                                    <h3><a href="#">{{ $seminar->nama_kegiatan }}</a></h3>
+                                    <h3><a href="#">{{ $seminar->nama_berita }}</a></h3>
                                     <div class="text">{!! $seminar->potongString() !!}</div>
                                     <div class="link-box">
                                         <a href="{{ url('/detailSeminar', encrypt($seminar->id)) }}">Read More</a>

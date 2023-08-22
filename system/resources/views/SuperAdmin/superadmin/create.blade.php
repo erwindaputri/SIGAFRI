@@ -56,7 +56,7 @@
 
                                 <div class="col-lg-12 col-12">
                                     <div class="d-flex float-right">
-                                        <a href="{{ url('SuperAdmin/admin') }}" class="btn btn-warning">BATAL</a>
+                                        <a href="{{ url('SuperAdmin/superadmin') }}" class="btn btn-warning">BATAL</a>
                                         <button class="btn btn-primary mx-2">SIMPAN</button>
                                     </div>
 

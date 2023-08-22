@@ -53,7 +53,7 @@
                                     <label>Poto</label>
                                     <div class="form-group row">
                                         <div class="col-md-6">
-                                            <img style="width: 80%" src="{{ url("public/$superadmin->poto") }}">
+                                            <img style="width: 30%" src="{{ url("public/$superadmin->poto") }}">
                                         </div>
                                         <div class="col-md-6">
                                             

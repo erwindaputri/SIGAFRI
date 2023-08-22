@@ -53,7 +53,7 @@
                                     <label>Poto</label>
                                     <div class="form-group row">
                                         <div class="col-md-6">
-                                            <img style="width: 80%" src="{{ url("public/$admin->poto") }}">
+                                            <img style="width: 30%" src="{{ url("public/$admin->poto") }}">
                                         </div>
                                         <div class="col-md-6">
                                             
@@ -64,7 +64,7 @@
 
                                 <div class="col-lg-12 col-12">
                                     <div class="d-flex float-right">
-                                        <a href="{{ url('SuperAdmin/anggota') }}" class="btn btn-warning">BATAL</a>
+                                        <a href="{{ url('SuperAdmin/admin') }}" class="btn btn-warning">BATAL</a>
                                         <button class="btn btn-primary mx-2">SIMPAN</button>
                                     </div>
 

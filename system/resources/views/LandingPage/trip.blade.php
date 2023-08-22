@@ -9,7 +9,7 @@
             </div>
             <ul class="page-breadcrumb">
                 <li><a href="index.html">Home</a></li>
-                <li>Kegiatan</li>
+                <li>Berita</li>
                 <li>TRIP</li>
             </ul>
         </div>
@@ -38,7 +38,7 @@
                             <div class="inner-column">
                                 <figure class="image">
                                     <a href="#">
-                                        <img src="{{ url('public') }}/{{ $trip->gambar_kegiatan }}" alt="">
+                                        <img src="{{ url('public') }}/{{ $trip->gambar_berita }}" alt="">
                                     </a>
                                 </figure>
                             </div>
@@ -52,11 +52,11 @@
                                     <li class="day">{{ $trip->tahunSaja() }}</li>
                                 </ul>
                                 <div class="content">
-                                    <h3><a href="#">{{ Str::words($trip->nama_kegiatan, 4, '...') }}</a></h3>
+                                    <h3><a href="#">{{ Str::words($trip->nama_berita, 4, '...') }}</a></h3>
                                     <div class="text">{!! $trip->potongString() !!}</div>
                                     <div class="link-box">
                                         <a href="{{ url('/detailTrip', encrypt($trip->id)) }}">
-                                            @if (str_word_count($trip->nama_kegiatan) > 4)
+                                            @if (str_word_count($trip->nama_berita) > 4)
                                                 Read More
                                             @else
                                                 Read more

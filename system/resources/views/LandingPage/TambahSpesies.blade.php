@@ -57,9 +57,10 @@
                                     <td>{{ $spesies->kategori_spesies }}</td>
                                     <td>{{ $spesies->kategori_jenis }}</td>
                                     <td>
-                                        <!-- Tambahkan tombol atau tautan untuk aksi yang diinginkan -->
-                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#detailModal{{ $spesies->id }}">Detail</button>
-                                    </td>
+                                    <div class="col-md-6 text-right">
+                                        <a href="{{ url('/detailspesies',encrypt($spesies->id)) }}" class="btn btn-primary">Detail</a>
+                                    </div>
+                                </td>
                                 </tr>
                             @endforeach
                         </tbody>
@@ -100,6 +101,7 @@
                         <p>Jenis: {{ $spesies->kategori_jenis }}</p>
                         <!-- tambahkan informasi spesies lainnya sesuai kebutuhan -->
                     </div>
+
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
                     </div>

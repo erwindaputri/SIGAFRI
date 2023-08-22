@@ -92,12 +92,12 @@
                     <ul class="list-unstyled profile-about-list">
                         <li class="d-flex align-items-center">
                            
-                            <span class="font-weight-bold ml-3">Nama spesies : {{ $list->nama_spesies }}</span>
+                            <span class="font-weight-bold ml-3">Nama spesies : {{ $list->nama_spesies }} <i></i></span>
                             
                         </li>
                         <li class="d-flex align-items-center">
                            
-                            <span class="font-weight-bold ml-3">Nama Latin : {{ $list->nama_latin }}</span>
+                            <span class="font-weight-bold ml-3">Nama Latin : <em>{{ $list->nama_latin }}</em></span>
                             
                         </li>
                         <li class="d-flex align-items-center">

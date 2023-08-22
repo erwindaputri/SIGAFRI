@@ -1,9 +1,14 @@
 @extends('Layout.Admin.base')
 @section('content')
-    <script src="{{ url('public') }}/admin/assets/plugins/jquery/jquery-3.4.1.min.js"></script>
+<script src="{{ url('public') }}/admin/assets/plugins/jquery/jquery-3.4.1.min.js"></script>
     <link href="{{ url('public') }}/admin/leafleat/leaflet.css" rel="stylesheet">
     <script src="{{ url('public') }}/admin/leafleat/leaflet.js"></script>
     <script src="{{ url('public') }}/admin/leafleat/us-states.js"></script>
+
+    {{-- marker cluster --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/leaflet.markercluster.js"></script>
+
+
     <style>
         .info.legend.leaflet-control,
         .box-info {
@@ -11,13 +16,21 @@
             padding: 12px;
             border-radius: 4px;
             position: absolute;
-            top: 500%;
+            top: 600%;
             right: 600%;
             min-width: 200px;
         }
 
         .species-popup {
             text-align: center;
+        }
+
+        .btn-fuck-1:focus {
+            background: rgb(8, 150, 48);
+        }
+
+        .btn-fuck-2:focus {
+            background: rgb(249, 222, 11);
         }
 
         .species-popup img {
@@ -31,6 +44,11 @@
             margin-top: 10px;
             text-decoration: none;
             color: #333;
+        }
+
+        /* Gaya untuk tombol aktif */
+        .btn.active {
+            border: 2px solid black !important;
         }
     </style>
     <div class="page-content">
@@ -68,9 +86,9 @@
                     <div class="card card-transparent stats-card">
                         <div class="card-body">
                             <div class="stats-info">
-                                <h5 class="card-title">{{ $kegiatan }}<span
+                                <h5 class="card-title">{{ $berita }}<span
                                         class="stats-change stats-change-success">DATA</span></h5>
-                                <p class="stats-text">KEGIATAN</p>
+                                <p class="stats-text">BERITA</p>
                             </div>
                             <div class="stats-icon change-success">
                                 <i class="material-icons">article</i>
@@ -92,34 +110,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-12">
-                    <div class="card card-transparent stats-card">
-                        <div class="card-body">
-                            <div class="stats-info">
-                                <h5 class="card-title">{{ $user }}<span
-                                        class="stats-change stats-change-success">DATA</span></h5>
-                                <p class="stats-text">User</p>
-                            </div>
-                            <div class="stats-icon change-success">
-                                <i class="material-icons">group_add</i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-12">
-                    <div class="card card-transparent stats-card">
-                        <div class="card-body">
-                            <div class="stats-info">
-                                <h5 class="card-title">{{ $hak_akses }}<span
-                                        class="stats-change stats-change-success">DATA</span></h5>
-                                <p class="stats-text">HAK AKSES</p>
-                            </div>
-                            <div class="stats-icon change-success">
-                                <i class="material-icons">handshake</i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
                 <div class="col-lg-12 col-md-12">
                     <div class="card mt-3">
@@ -133,7 +123,7 @@
 
     <script>
         // Membuat peta
-        var map = L.map('map').setView([0.0386653, 110.3448371], 4);
+        var map = L.map('map').setView([-2.5489, 118.0149], 4);
 
         // Menambahkan layer peta
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -148,7 +138,7 @@
                     lng: {{ $data->lng }},
                     species: `{{ $data->nama_spesies }}`,
                     image: `{{ url('public') }}/{{ $data->galeri->isNotEmpty() ? $data->galeri->first()->gambar_spesies : '' }}`,
-                    detailUrl: `{{ url('SuperAdmin/spesies/detail', encrypt($data->id)) }}`
+                    detailUrl: `{{ url('detailReptil', encrypt($data->id)) }}`
                 },
             @endforeach
         ];
@@ -160,7 +150,7 @@
                     lng: {{ $data->lng }},
                     species: `{{ $data->nama_spesies }}`,
                     image: `{{ url('public') }}/{{ $data->galeri->isNotEmpty() ? $data->galeri->first()->gambar_spesies : '' }}`,
-                    detailUrl: `{{ url('Admin/spesies/detail', encrypt($data->id)) }}`
+                    detailUrl: `{{ url('detailAmfibi', encrypt($data->id)) }}`
                 },
             @endforeach
         ];
@@ -179,6 +169,9 @@
             iconSize: [24, 24], // size of the icon
         });
 
+
+        var amphibianCluster = L.markerClusterGroup();
+        var reptileCluster = L.markerClusterGroup();
         // Menambahkan marker untuk setiap data pesebaran amphibian
         for (var i = 0; i < amfibiDataLayer.length; i++) {
             var marker = L.marker([amfibiDataLayer[i].lat, amfibiDataLayer[i].lng], {
@@ -186,6 +179,8 @@
             }).bindPopup('<div class="species-popup"><h5>' + amfibiDataLayer[i].species + '</h5><img src="' +
                 amfibiDataLayer[i].image + '" alt="Spesies"><a href="' + amfibiDataLayer[i].detailUrl +
                 '">Lihat Detail</a></div>').addTo(amphibianLayer);
+
+            amphibianCluster.addLayer(marker);
         }
 
         // Menambahkan marker untuk setiap data pesebaran reptil
@@ -195,11 +190,12 @@
             }).bindPopup('<div class="species-popup"><h5>' + reptilDataLayer[j].species + '</h5><img src="' +
                 reptilDataLayer[j].image + '" alt="Spesies"><a href="' + reptilDataLayer[j].detailUrl +
                 '">Lihat Detail</a></div>').addTo(reptileLayer);
+            reptileCluster.addLayer(marker);
         }
 
         // Menambahkan layer grup ke peta
-        amphibianLayer.addTo(map);
-        reptileLayer.addTo(map);
+        map.addLayer(amphibianCluster);
+        map.addLayer(reptileCluster);
 
         // Fungsi untuk menyembunyikan atau menampilkan layer grup
         function toggleLayer(layer) {
@@ -210,6 +206,8 @@
             }
         }
 
+
+
         // Menggunakan tombol untuk menyembunyikan atau menampilkan layer pesebaran amphibian
         var amphibianButton = L.control({
             position: 'topright'
@@ -217,9 +215,9 @@
         amphibianButton.onAdd = function(map) {
             var button = L.DomUtil.create('button');
             button.innerHTML = 'AMFIBI';
-            button.className = 'btn btn-primary btn-sm';
+            button.className = 'btn btn-success btn-sm';
             button.onclick = function() {
-                toggleLayer(amphibianLayer);
+                toggleLayer(amphibianCluster, button);
             };
             return button;
         };
@@ -234,11 +232,38 @@
             button.innerHTML = 'REPTIL';
             button.className = 'btn btn-warning btn-sm';
             button.onclick = function() {
-                toggleLayer(reptileLayer);
+                toggleLayer(reptileCluster, button);
             };
             return button;
         };
         reptileButton.addTo(map);
+
+        var toggleAllButton = L.control({
+            position: 'topright'
+        });
+        toggleAllButton.onAdd = function(map) {
+            var button = L.DomUtil.create('button');
+            button.innerHTML = 'SEMUA';
+            button.className = 'btn btn-primary btn-sm';
+            button.onclick = function() {
+                toggleLayer(amphibianCluster, button);
+                toggleLayer(reptileCluster, button);
+            };
+            return button;
+        };
+        toggleAllButton.addTo(map);
+
+        function toggleLayer(layer, button) {
+            if (map.hasLayer(layer)) {
+                map.removeLayer(layer);
+                button.classList.remove('active');
+            } else {
+                map.addLayer(layer);
+                button.classList.add('active');
+            }
+        }
+
+
 
         var info = L.control({
             position: 'bottomleft'
@@ -316,7 +341,7 @@
                 click: zoomToFeature
             });
         }
-
+        marker.bindLabel(amfibiDataLayer[i].nama_daerah + '<br>' + amfibiDataLayer[i].nama_desa);
         map.attributionControl.addAttribution('Population data &copy; <a href="http://census.gov/">US Census Bureau</a>');
 
         const legend = L.control({

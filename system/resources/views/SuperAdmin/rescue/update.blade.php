@@ -4,7 +4,7 @@
     <div class="content-header">
         <div class="d-flex align-items-center">
             <div class="mr-auto">
-                <h3 class="page-title br-0 mb-3">FORM UPDATE DATA RESCUE</h3>
+                <h3 class="page-title br-0 mb-3">FORM EDIT DATA RESCUE</h3>
             </div>
 
         </div>

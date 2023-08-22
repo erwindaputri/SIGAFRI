@@ -100,6 +100,6 @@ class SPAnggota extends Controller
         $anggota->status = 2;
         $anggota->save();
 
-        return back();
+        return back()->with('success', 'Akun berhasil divaslidasi !');
     }
 }

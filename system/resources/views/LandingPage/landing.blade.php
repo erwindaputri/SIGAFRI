@@ -37,7 +37,7 @@
                     <div class="outer-container clearfix">
                         <div class="logo-box">
                             <div class="logo"><a href="index.html"><img
-                                        src="{{ url('public') }}/landing/images/logo-afri1.png" alt=""
+                                        src="{{ url('public') }}/landing/images/LOGO1.png" alt=""
                                         title=""></a></div>
                         </div>
 
@@ -65,12 +65,9 @@
                                                 <li><a href="{{ url('/reptil') }}">Reptil</a></li>
                                             </ul>
                                         </li>
-                                        <li class="dropdown"><a href="#">Kegiatan</a>
-                                            <ul>
-                                                <li><a href="{{ url('/seminar') }}">Seminar</a></li>
-                                                <li><a href="{{ url('/trip') }}">Trip</a></li>
-                                                <li><a href="{{ url('/berita') }}">Berita</a></li>
-                                            </ul>
+                                        
+                                        <li class="current">
+                                            <a href="{{ url('/berita') }}">Berita</a>
                                         </li>
                                         <li class="current">
                                             <a href="{{ url('/ebook') }}">E-book</a>
@@ -126,7 +123,7 @@
                 <div class="auto-container clearfix">
                     <!--Logo-->
                     <div class="logo pull-left">
-                        <a href="#" title=""><img src="{{ url('public') }}/landing/images/logo-afri1.png"
+                        <a href="#" title=""><img src="{{ url('public') }}/landing/images/LOGO1.png"
                                 alt="" title=""></a>
                     </div>
                     <!--Right Col-->
@@ -146,12 +143,8 @@
                                             <li><a href="{{ url('/reptil') }}">Reptil</a></li>
                                         </ul>
                                     </li>
-                                    <li class="dropdown"><a href="plans.html">Kegiatan</a>
-                                        <ul>
-                                            <li><a href="{{ url('/seminar') }}">Seminar</a></li>
-                                            <li><a href="{{ url('/trip') }}">Trip</a></li>
-                                            <li><a href="{{ url('/berita') }}">Berita</a></li>
-                                        </ul>
+                                    <li class="current">
+                                        <a href="{{ url('/berita') }}">Berita</a>
                                     </li>
                                     <li class="current">
                                         <a href="{{ url('/ebook') }}">E-book</a>
@@ -288,7 +281,7 @@
                         </div>
 
                         <!--Footer Column-->
-                        <div class="footer-column col-lg-4 col-md-6 col-sm-12">
+                        {{-- <div class="footer-column col-lg-4 col-md-6 col-sm-12">
                             <div class="footer-widget lists-widget">
                                 <div class="footer-title">
                                     <h2>Usefull Links</h2>
@@ -350,7 +343,7 @@
                                 </div>
                                 <a href="blog.html" class="more-news">More News</a>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>

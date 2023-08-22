@@ -35,6 +35,8 @@ class AdminEbook extends Controller
         // Menyimpan data ebook ke database
         $ebook = new Ebook;
         $ebook->nama_ebook = $req->nama_ebook;
+        $ebook->tahun = $req->tahun;
+        $ebook->penulis = $req->penulis;
         $ebook->sampul =  'app/sampul/'.$namaSampul;
         $ebook->pdf =  'app/pdf/'.$namapdf;
         $ebook->save();
@@ -75,6 +77,8 @@ class AdminEbook extends Controller
 
         // Mengupdate data ebook di database
         $ebook->nama_ebook = $req->nama_ebook;
+        $ebook->tahun = $req->tahun;
+        $ebook->penulis = $req->penulis;
         $ebook->update();
 
         // Mengarahkan pengguna kembali ke halaman daftar ebook dengan pesan sukses

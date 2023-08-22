@@ -19,19 +19,26 @@
                             <thead>
                                 <tr>
                                     <th>
-                                        <center>No.</center>
+                                        No.
                                     </th>
                                     <th>
-                                        <center>Nama</center>
+                                        Nama
                                     </th>
                                     <th>
-                                        <center>sampul</center>
+                                        Penulis
                                     </th>
                                     <th>
-                                        <center>PDF</center>
+                                        Tahun
+                                    </th>
+                                    
+                                    <th>
+                                        sampul
                                     </th>
                                     <th>
-                                        <center>Aksi</center>
+                                        PDF
+                                    </th>
+                                    <th>
+                                        Aksi
                                     </th>
                                 </tr>
                             </thead>
@@ -39,24 +46,30 @@
                                 @foreach ($list as $ebook)
                                     <tr>
                                         <td>
-                                            <center>{{ $loop->iteration }}</center>
+                                            {{ $loop->iteration }}
                                         </td>
                                         <td>
-                                            <center>{{ $ebook->nama_ebook }}</center>
+                                            {{ $ebook->nama_ebook }}
                                         </td>
                                         <td>
-                                            <center> <img src="{{ url('public') }}/{{ $ebook->sampul }}" alt="" style="width: 50px;height:50px"></center>
+                                            {{ $ebook->penulis }}
+                                         </td>
+                                         <td>
+                                            {{ $ebook->tahun }}
+                                         </td>
+                                        <td>
+                                             <img src="{{ url('public') }}/{{ $ebook->sampul }}" alt="" style="width: 50px;height:50px">
                                         </td>
                                         <td>
-                                            <center>
+                                            
                                                 <a href="{{ url('public') }}/{{ $ebook->pdf }}" src="{{ url('public') }}/{{ $ebook->pdf }}" target="_parent" class="btn btn-info">
                                                     Lihat PDF
                                                 </a>
-                                            </center>
+                                            
                                         </td>
 
                                         <td>
-                                            <center>
+                                            
                                                 <div class="btn-group">
 
                                                     <a href="{{ url('Admin/ebook/update', encrypt($ebook->id)) }}" class="btn btn-sm btn-primary">
@@ -66,7 +79,7 @@
                                                         <i class="fa fa-trash"></i>
                                                     </a>
                                                 </div>
-                                            </center>
+                                            
                                         </td>
                                     </tr>
                                 @endforeach

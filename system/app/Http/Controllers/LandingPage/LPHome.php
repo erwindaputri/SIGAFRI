@@ -7,11 +7,10 @@ use Illuminate\Http\Request;
 
 
 use App\Models\Spesies;
-use App\Models\Kegiatan;
+use App\Models\Berita;
 use App\Models\Ebook;
 use App\Models\Rescue;
 use App\Models\anggota;
-use App\Models\HakAkses;
 use App\Models\Spesiesgaleri;
 
 class LPHome extends Controller
@@ -58,36 +57,67 @@ class LPHome extends Controller
         return view('landingPage.detailAmfibi', $data);
     }
 
+    function berita (){
+
+        $data['list'] = Berita::get();
+        return view('landingPage.berita', $data);
+
+    }
+    function detailBerita($berita)
+    {
+        $id = decrypt($berita);
+        $data['list'] = Berita::find($id);
+        return view('landingPage.detailBerita', $data);
+    }
+    
+
     function seminar()
     {
 
-        $data['list'] =  Kegiatan::where('kategori_kegiatan', 'Seminar')->get();
+        $data['list'] =  Berita::where('kategori_berita', 'Seminar')->get();
 
-        return view('landingPage.seminar', $data);
+        return view('landingPage.berita', $data);
     }
 
-    function detailSeminar($kegiatan)
+    function detailSeminar($berita)
     {
 
-        $id = decrypt($kegiatan);
-        $data['list'] = Kegiatan::find($id);
+        $id = decrypt($berita);
+        $data['list'] = Berita::find($id);
         return view('landingPage.detailSeminar', $data);
     }
     function trip()
     {
 
-        $data['list'] =  Kegiatan::where('kategori_kegiatan', 'Trip')->get();
+        $data['list'] =  Berita::where('kategori_berita', 'Trip')->get();
 
-        return view('landingPage.trip', $data);
+        return view('landingPage.berita', $data);
     }
 
-    function detailTrip($kegiatan)
+    function detailTrip($berita)
     {
 
-        $id = decrypt($kegiatan);
-        $data['list'] = Kegiatan::find($id);
+        $id = decrypt($berita);
+        $data['list'] = Berita::find($id);
         return view('landingPage.detailTrip', $data);
     }
+
+    function Kegiatan()
+    {
+
+        $data['list'] =  Berita::where('kategori_berita', 'Kegiatan')->get();
+
+        return view('landingPage.berita', $data);
+    }
+
+    function detailKegiatan($berita)
+    {
+
+        $id = decrypt($berita);
+        $data['list'] = Berita::find($id);
+        return view('landingPage.detailKegiatan', $data);
+    }
+
 
     function ebook()
     {
@@ -97,21 +127,6 @@ class LPHome extends Controller
         return view('landingPage.ebook', $data);
     }
 
-    function berita()
-    {
-
-        $data['list'] =  Kegiatan::where('kategori_kegiatan', 'Berita')->get();
-
-        return view('landingPage.berita', $data);
-    }
-
-    function detailBerita($kegiatan)
-    {
-
-        $id = decrypt($kegiatan);
-        $data['list'] = Kegiatan::find($id);
-        return view('landingPage.detailBerita', $data);
-    }
 
     function TambahSpesies()
     {
@@ -158,6 +173,15 @@ class LPHome extends Controller
             return redirect('/TambahSpesies')->with('success', 'Data Spesies berhasil disimpan!');
         }
         return back()->with('danger', 'Data Spesies gagal disimpan!, coba ulangi kembali.');
+    }
+
+    function detailspesies($spesies)
+    {
+
+        $id = decrypt($spesies);
+        $data['list'] =  Spesies::with('galeri')->find($id);
+
+        return view('landingPage.detailspesies', $data);
     }
 
     function rescue()

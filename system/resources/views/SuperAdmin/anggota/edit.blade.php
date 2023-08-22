@@ -65,7 +65,7 @@
                                     <label>Poto</label>
                                     <div class="form-group row">
                                         <div class="col-md-6">
-                                            <img style="width: 80%" src="{{ url("public/$anggota->poto") }}">
+                                            <img style="width: 20%" src="{{ url("public/$anggota->poto") }}">
                                         </div>
                                         <div class="col-md-6">
                                             

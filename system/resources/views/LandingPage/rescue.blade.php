@@ -1,6 +1,9 @@
 @extends('LandingPage.landing')
 
 @section('content')
+<!-- Contoh penggunaan Font Awesome untuk ikon telepon -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
     <section class="services-section">
         <div class="auto-container">
             <div class="sec-title style-two">
@@ -28,9 +31,17 @@
 <div class="service-block col-lg-4 col-md-6 col-sm-12 wow fadeIn">
     <div class="inner-box">
         <div class="caption-box" style="background-color: rgb(24, 96, 60);">
-            <p class="text-left" style="color: white ">Nomor telepon: {{ $rescue->nomor_telepon }}</p>
-            <p class="text-left"style="color: white">Email: {{ $rescue->email }}</p>
-            <p class="text-left" style="color: white">Domisili: {{ $rescue->alamat }}</p>
+            <p class="text-left" style="color: white">
+                <i class="fas fa-phone-alt"></i> Nomor telepon:
+                <a href="tel:{{ $rescue->nomor_telepon }}">{{ $rescue->nomor_telepon }}</a>
+              </p>
+              <p class="text-left" style="color: white">
+                <i class="far fa-envelope"></i> Email: {{ $rescue->email }}
+              </p>
+              <p class="text-left" style="color: white">
+                <i class="fas fa-map-marker-alt"></i> Daerah: {{ $rescue->alamat }}
+              </p>
+              
         </div>
     </div>
 </div>

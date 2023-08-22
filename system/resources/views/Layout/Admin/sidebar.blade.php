@@ -29,9 +29,9 @@
                     <i class="material-icons">description</i>E-book
                 </a>
             </li>
-            <li class="{{ (request()->is('Admin/kegiatan*')) ? 'active-page' : '' }}">
-                <a href="{{ url('Admin/kegiatan') }}" >
-                    <i class="material-icons">article</i>Kegiatan
+            <li class="{{ (request()->is('Admin/berita*')) ? 'active-page' : '' }}">
+                <a href="{{ url('Admin/berita') }}" >
+                    <i class="material-icons">article</i>Berita
                 </a>
             </li>
             <li class="{{ (request()->is('Admin/rescue*')) ? 'active-page' : '' }}">

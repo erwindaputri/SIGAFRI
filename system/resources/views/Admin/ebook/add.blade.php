@@ -24,6 +24,22 @@
                                         <input type="text" name="nama_ebook" class="form-control" placeholder="Nama E-book ..."required>
                                     </div>
                                 </div>
+
+                                <div class="col-lg-4 col-12">
+                                    <div class="form-group">
+                                        <label for="">Penulis</label>
+                                        <input type="text" name="penulis" class="form-control" placeholder="Nama Penulis ..."required>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4 col-12">
+                                    <div class="form-group">
+                                        <label for="">Tahun Terbit</label>
+                                        <input type="number" min="2000" name="tahun" class="form-control" placeholder="Tahun Terbit ..."required>
+                                    </div>
+                                </div>
+
+
                                 <div class="col-lg-4 col-12">
                                     <div class="form-group">
                                         <label for="">Sampul</label>
@@ -38,7 +54,7 @@
                                     </div>
                                     <div class="col-lg-12 col-12">
                                         <div class="d-flex align-items-center justify-content-center">
-                                            <a href="{{ url('Admin/spesies') }}" class="btn btn-warning">BATAL</a>
+                                            <a href="{{ url('Admin/ebook') }}" class="btn btn-warning">BATAL</a>
                                             <button class="btn btn-primary mx-2">SIMPAN</button>
                                         </div>
                                     </div>

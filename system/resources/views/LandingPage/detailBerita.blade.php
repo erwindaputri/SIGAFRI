@@ -8,8 +8,8 @@
             </div>
             <ul class="page-breadcrumb">
                 <li><a href="">Home</a></li>
-                <li>Kegiatan</li>
-                <li><a href="">Berita</a></li>
+                <li>Berita</li>
+                
 
             </ul>
         </div>
@@ -19,7 +19,7 @@
             <div class="row clearfix justify-content-center">
                 <!-- Tambahkan kelas justify-content-center untuk membuatnya rata tengah -->
                 <!--Content Side-->
-                <div class="content-side col-lg-8 col-md-12 col-sm-12">
+                <div class="content-side col-lg-8 col-md-8 col-sm-12">
                     <div class="blog-single">
                         <!-- News Block -->
                         <div class="news-block-three">
@@ -27,7 +27,7 @@
                                 <!-- Tambahkan class "text-center" untuk membuatnya rata tengah -->
                                 <div class="image-box wow fadeIn text-center">
                                     <figure class="image">
-                                        <img src="{{ url('public') }}/{{ $list->gambar_kegiatan }}" alt=""
+                                        <img src="{{ url('public') }}/{{ $list->gambar_berita }}" alt=""
                                             style="max-width: 100%; height: auto;">
                                         <!-- Sesuaikan ukuran gambar dengan menambahkan styling inline -->
                                     </figure>
@@ -41,7 +41,7 @@
                                         </ul>
                                         <div class="content">
 
-                                            <h3>{{ $list->nama_kegiatan }}</h3>
+                                            <h3>{{ $list->nama_berita }}</h3>
                                             <p>{!! $list->deskripsi !!}</p>
                                         </div>
                                     </div>
@@ -49,6 +49,24 @@
                             </div>
                         </div>
                         <!-- Other Option -->
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3>Berita Terkait :</h3>
+                            <table class="table table-borderless table-hover">
+                                @foreach(App\Models\Berita::where('id','!=',$list->id)->get()->random(8) as $b )
+                                <tr>
+                                    <td><img src="{{ url('public') }}/{{ $b->gambar_berita }}" width="80px" alt=""></td>
+                                    <td><a href="{{ url('/detailBerita', encrypt($b->id))}}">{{ $b->nama_berita }} </a><br>
+                                        {{ $b->created_at }}
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>

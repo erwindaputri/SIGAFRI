@@ -3,7 +3,7 @@
     <section class="page-title" style="background-image:url(images/background/4.jpg)">
         <div class="auto-container">
             <div class="title-box">
-                <h1>Register SIGAPRI</h1>
+                <h1>REGISTRASI SIGAFRI</h1>
             </div>
         </div>
     </section>
@@ -25,7 +25,7 @@
                                     @csrf
 
                                     <div class="form-group">
-                                        <label for="email">nomor:</label>
+                                        <label for="email">Nomor Telepon:</label>
                                         <input type="text" name="nomor" class="form-control"
                                             placeholder="Masukan nomor Anda" required>
                                     </div>
@@ -74,7 +74,7 @@
                         <div class="content-column col-lg-12 col-md-12 col-sm-12">
                             <div class="inner-column d-flex px-3 py-3">
                                 <div class="form-group">
-                                    <p>Jika Sudah Memiliki Akun Silahkan <a href="{{ url('register') }}"> Login</a></p>
+                                    <p>Jika Sudah Memiliki Akun Silahkan <a href="{{ url('login') }}"> Login</a></p>
                                 </div>
                             </div>
                         </div>
